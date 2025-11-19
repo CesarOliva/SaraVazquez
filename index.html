@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="César Oliva">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph optimizado -->
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="Imagenes/logo.png">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="">
+    <meta property="og:locale" content="es_MX">
+
+    <title>Exito y Salud</title>
+    
+    <link rel="canonical" href="">
+    <!-- Recursos externos-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/17383348a8.js" crossorigin="anonymous"></script>    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Imagenes/logo.png" type="image/png"/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section class="immunocal relative w-full min-h-screen p-8 md:p-24 bg-[#00348e] flex">
+        <div class="w-full flex justify-between flex-wrap items-center">
+            <div class="flex flex-col items-center md:items-start text-white w-full md:w-[50%] max-w-xl order-1 md:order-0">
+                <h2 id="nombre" class="text-center md:text-left text-4xl md:text-5xl font-bold mb-2">IMMUNOCAL MX</h2>
+                <p id="texto" class="text-center md:text-left text-lg mb-4">
+                    Immunocal® se distingue por ser una proteína de origen completamente natural, ostentando el valor biológico más elevado entre todas las 
+                    proteínas disponibles para el consumo. Este suplemento ha demostrado clínicamente su capacidad para incrementar los niveles de glutatión 
+                    en el organismo.
+                </p>
+                <a id="enlace" class="flex justify-center items-center bg-white rounded-xl text-[#1e1e1e] font-[500] text-[18px] w-[110px] h-[38px]" href="#">Ver más</a>
+            </div>
+            <div class="order-0 md:order-1 w-full md:w-[50%] max-w-[550px] flex justify-center items-center">
+                <img id="imagen" src="Imagenes/MX.png" alt="Producto" class="flex justify-center max-h-[500px] my-2">
+            </div>
+            <ul class="hidden md:flex thumb">
+                <li><img src="Imagenes/MX.png" onclick="changeProduct('immunocal', 'MX')" alt="Immunocal MX"></li>
+                <li><img src="Imagenes/Platinum.png" onclick="changeProduct('immunocal', 'Platinum')" alt="Immunocal Platinum"></li>
+                <li><img src="Imagenes/Sport.png" onclick="changeProduct('immunocal', 'Sport')" alt="Immunocal Sport"></li>
+                <li><img src="Imagenes/Optimizer.png" onclick="changeProduct('immunocal', 'Optimizer')" alt="Immunocal Optimizer"></li>
+                <li><img src="Imagenes/Performance.png" onclick="changeProduct('immunocal', 'Performance')" alt="Immunocal Optimizer Performance"></li>
+                <li><img src="Imagenes/Jamaica.png" onclick="changeProduct('immunocal', 'Jamaica')" alt="Optimizer Naranja" class="h-16"></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="hidden md:flex stack pastillas w-full h-[300vh] relative bg-white flex">
+        <div class="left flex flex-col items-center justify-center">
+            <div>
+                <h2 class="text-5xl font-bold max-w-[420px]">MULTI + RESVERATROL</h2>
+                <p class="max-w-[420px] mt-4 mb-2 text-[20px]">
+                    Multi+Resveratrol es una fórmula excepcional que va más allá de los multivitamínicos tradicionales. 
+                    Compuesta por 21 vitaminas, minerales y nutrientes esenciales, incluye componentes únicos como la clorela y el resveratrol. 
+                </p>
+                <a class="flex justify-center items-center bg-[#12a561] rounded-xl text-white font-[500] text-[18px] w-[110px] h-[38px]" href="#">Ver más</a>
+            </div>
+        </div>
+        <div class="right">
+            <div class="card" data-producto="Resveratrol">
+                <img src="Imagenes/Resveratrol.png" alt="Multi Resveratrol">
+            </div>
+            <div class="card" data-producto="Probiotico">
+                <img src="Imagenes/Probiotico.png" alt="Probiotico 3+">
+            </div>
+            <div class="card" data-producto="KLC">
+                <img src="Imagenes/Calcio.png" alt="KLC D">
+            </div>
+            <div class="card" data-producto="Bionutric">
+                <img src="Imagenes/Bionutric.png" alt="Bionutric">
+            </div>
+            <div class="card" data-producto="Omega">
+                <img src="Imagenes/Omega.png" alt="Omega Gen V">
+            </div>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>
