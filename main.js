@@ -101,60 +101,76 @@ function changeProduct(section, product){
     document.querySelector('.'+section).style.background = productos[product].color;
 }
 
+deviceWidth = window.innerWidth;
 
-const cards = document.querySelectorAll(".card");
-const stackArea = document.querySelector(".stack");
+if (deviceWidth < 768) {
+    const cards = document.querySelectorAll(".card");
+    const stackArea = document.querySelector(".stack");
 
-function updateProductPanel(productKey) {
-    document.querySelector('.pastillas h2').innerHTML = productos[productKey].nombre;
-    document.querySelector('.pastillas p').innerHTML = productos[productKey].texto;
-    document.querySelector('.pastillas a').href = productos[productKey].enlace;
-    document.querySelector('.pastillas a').style.background = productos[productKey].color;
-}
+    function updateProductPanel(productKey) {
+        document.querySelector('.pastillas h2').innerHTML = productos[productKey].nombre;
+        document.querySelector('.pastillas p').innerHTML = productos[productKey].texto;
+        document.querySelector('.pastillas a').href = productos[productKey].enlace;
+        document.querySelector('.pastillas a').style.background = productos[productKey].color;
+    }
 
-function getActiveCard() {
-    for (let i = 0; i < cards.length; i++) {
-        if (!cards[i].classList.contains("away")) {
-            return cards[i];
+    function getActiveCard() {
+        for (let i = 0; i < cards.length; i++) {
+            if (!cards[i].classList.contains("away")) {
+                return cards[i];
+            }
         }
     }
-}
 
-function rotateCards() {
-    let angle = 0;
-    cards.forEach((card, index) => {
-        if (card.classList.contains("away")) {
-            card.style.transform = `translateY(-120vh) rotate(-48deg)`;
-        } else {
-            card.style.transform = ` rotate(${angle}deg)`;
-            angle = angle - 10;
-            card.style.zIndex = cards.length - index;
+    function rotateCards() {
+        let angle = 0;
+        cards.forEach((card, index) => {
+            if (card.classList.contains("away")) {
+                card.style.transform = `translateY(-120vh) rotate(-48deg)`;
+            } else {
+                card.style.transform = ` rotate(${angle}deg)`;
+                angle = angle - 10;
+                card.style.zIndex = cards.length - index;
+            }
+        });
+    }
+
+    rotateCards();
+
+    window.addEventListener("scroll", () => {
+        let distance = window.innerHeight * 0.4;
+        let topVal = stackArea.getBoundingClientRect().top;
+        let index = -1 * (topVal / distance + 1);
+
+        index = Math.floor(index);
+
+        for (i = 0; i < cards.length; i++) {
+            if (i <= index) {
+            cards[i].classList.add("away");
+            } else {
+            cards[i].classList.remove("away");
+            }
+        }
+        rotateCards();
+
+        const activeCard = getActiveCard();
+
+        if (activeCard) {
+            const key = activeCard.dataset.producto;
+            updateProductPanel(key);
         }
     });
 }
+const productOrder = ["MX", "Platinum", "Sport", "Optimizer", "Performance", "Jamaica"];
+let currentIndex = 0; // Empieza en MX
 
-rotateCards();
-
-window.addEventListener("scroll", () => {
-    let distance = window.innerHeight * 0.4;
-    let topVal = stackArea.getBoundingClientRect().top;
-    let index = -1 * (topVal / distance + 1);
-
-    index = Math.floor(index);
-
-    for (i = 0; i < cards.length; i++) {
-        if (i <= index) {
-          cards[i].classList.add("away");
-        } else {
-          cards[i].classList.remove("away");
-        }
-      }
-    rotateCards();
-
-    const activeCard = getActiveCard();
-
-    if (activeCard) {
-        const key = activeCard.dataset.producto;
-        updateProductPanel(key);
+function changeProductArrow(direction) {
+    if (direction === "next") {
+        currentIndex = (currentIndex + 1) % productOrder.length;
+    } else if (direction === "prev") {
+        currentIndex = (currentIndex - 1 + productOrder.length) % productOrder.length;
     }
-});
+
+    const productKey = productOrder[currentIndex];
+    changeProduct("immunocal", productKey);
+}

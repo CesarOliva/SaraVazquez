@@ -32,8 +32,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <section class="immunocal relative w-full min-h-screen p-8 md:p-24 bg-[#00348e] flex">
-        <div class="w-full flex justify-between flex-wrap items-center">
+    <section class="immunocal relative w-full min-h-screen p-8 md:p-16 lg:p-24 bg-[#00348e] flex">
+        <div class="w-full flex justify-center md:justify-between flex-wrap items-center">
             <div class="flex flex-col items-center md:items-start text-white w-full md:w-[50%] max-w-xl order-1 md:order-0">
                 <h2 id="nombre" class="text-center md:text-left text-4xl md:text-5xl font-bold mb-2">IMMUNOCAL MX</h2>
                 <p id="texto" class="text-center md:text-left text-lg mb-4">
@@ -54,6 +54,18 @@
                 <li><img src="Imagenes/Performance.png" onclick="changeProduct('immunocal', 'Performance')" alt="Immunocal Optimizer Performance"></li>
                 <li><img src="Imagenes/Jamaica.png" onclick="changeProduct('immunocal', 'Jamaica')" alt="Optimizer Naranja" class="h-16"></li>
             </ul>
+
+            <div class="flex w-full justify-between justify-center items-center gap-6 mt-4 md:hidden">
+                <button onclick="changeProductArrow('prev')" 
+                        class="w-10 h-10 flex justify-center items-center rounded-full bg-white/80 text-black text-2xl font-bold shadow">
+                    ‹
+                </button>
+
+                <button onclick="changeProductArrow('next')" 
+                        class="w-10 h-10 flex justify-center items-center rounded-full bg-white/80 text-black text-2xl font-bold shadow">
+                    ›
+                </button>
+            </div>
         </div>
     </section>
 
