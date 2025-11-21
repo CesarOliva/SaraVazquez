@@ -56,6 +56,7 @@ section{
 .thumb li img{
     max-width: 100px;
 }
+
 .pastillas .left a{
     transition: 1s
 }
@@ -109,4 +110,15 @@ section{
 
 .away {
  transform-origin: bottom left;
+}
+
+@media screen and (max-width: 768px) {
+    .left,
+    .right{
+        flex-basis: auto;
+    }
+
+    .left{
+        height: max-content;
+    }
 }
