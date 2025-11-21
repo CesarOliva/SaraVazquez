@@ -112,6 +112,15 @@ section{
  transform-origin: bottom left;
 }
 
+@media screen and (max-width: 968px) {
+    .card{
+        width: 300px;
+        height: 300px;
+        top: calc(50% - 125px);
+        left: calc(50% - 125px);
+    }
+}
+
 @media screen and (max-width: 768px) {
     .left,
     .right{
