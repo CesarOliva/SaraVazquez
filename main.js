@@ -134,7 +134,11 @@ function rotateCards() {
     let angle = 0;
     cards.forEach((card, index) => {
         if (card.classList.contains("away")) {
-            card.style.transform = `translateY(-120vh) rotate(-48deg)`;
+            if (window.innerWidth < 768) {
+                card.style.transform = `translateX(-100vw) rotate(-48deg)`;
+            }else{
+                card.style.transform = `translateY(-120vh) rotate(-48deg)`;
+            }
         } else {
             card.style.transform = ` rotate(${angle}deg)`;
             angle = angle - 10;

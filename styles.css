@@ -121,4 +121,16 @@ section{
     .left{
         height: max-content;
     }
+
+    .card{
+        width: 250px;
+        height: 250px;
+        top: calc(50% - 125px);
+        left: calc(50% - 125px);
+    }
+
+    .right{
+        top: 25%;
+        right: 50%;
+    }
 }
