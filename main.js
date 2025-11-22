@@ -120,8 +120,18 @@ function updateProductPanel(productKey) {
     document.querySelector('.pastillas p').innerHTML = productos[productKey].texto;
     document.querySelector('.pastillas a').href = productos[productKey].enlace;
     document.querySelector('.pastillas a').style.background = productos[productKey].color;
-    document.querySelector('.img-container').style.background = productos[productKey].color;
-    document.querySelector('.imagenes .img-container img').src = productos[productKey].imagen;
+/*==    document.querySelector('.img-container').style.background = productos[productKey].color;
+document.querySelector('.imagenes .img-container img').src = productos[productKey].imagen;*/
+
+//CAMBIOS
+
+    primero = (document.querySelector('.img-container').dataset.producto)
+    if(primero != productKey){
+        document.querySelector('.img-container').remove();
+        document.querySelector('.img-container').style.background = productos[productKey].color;
+    }
+
+//TERMINA CAMBIOS
 }
 
 function getActiveCard() {
