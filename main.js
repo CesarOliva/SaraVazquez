@@ -1,3 +1,4 @@
+// Datos de los productos
 const productos = {
     MX: {
         nombre: "IMMUNOCAL MX",
@@ -53,7 +54,8 @@ const productos = {
                 'compuesta por 21 vitaminas, minerales y nutrientes esenciales, incluye componentes únicos como la clorela y el resveratrol.',
         imagen: 'Imagenes/Resveratrol.png',   
         enlace: '#',
-        color: '#12a561'
+        color: '#12a561',
+        zIndex: 5
     },
     Probiotico: {
         nombre: "PROBIOTICO 3+",
@@ -61,14 +63,16 @@ const productos = {
                 'en antioxidantes para promover un sistema digestivo más saludable.',
         imagen: 'Imagenes/Probiotico.png',   
         enlace: '#',
-        color: '#cc3848'
+        color: '#cc3848',
+        zIndex: 4
     },
     KLC:{
         nombre: "KLC-D",
         texto: 'KLC-D garantiza una absorción mineral óptima, convirtiéndolo en la elección ideal para el fortalecimiento y crecimiento óseo.',
         imagen: 'Imagenes/Calcio.png',
         enlace: '#',
-        color: '#d36849'
+        color: '#d36849',
+        zIndex: 3
     },
     Bionutric:{
         nombre: "BIONUTRIC",
@@ -76,7 +80,8 @@ const productos = {
                 ' y reduce la inflamación.',
         imagen: 'Imagenes/Bionutric.png',
         enlace: '#',
-        color: '#4d1187'
+        color: '#4d1187',
+        zIndex: 2
     },
     Omega:{
         nombre: "OMEGA GEN V",
@@ -84,10 +89,16 @@ const productos = {
                 ' convirtiéndola en una solución superior y conveniente para el bienestar general.',
         imagen: 'Imagenes/Omega.png',
         enlace: '#',
-        color: '#f5a562'
+        color: '#f5a562',
+        zIndex: 1
     }
 }
 
+//Indices para mostrar contenido en dispositivos moviles
+const productOrder = ["MX", "Platinum", "Sport", "Optimizer", "Performance", "Jamaica"];
+let currentIndex = 0;
+
+//Cambia el contenido del producto mostrado
 function changeProduct(section, product){
     document.querySelector('.'+section+' #nombre').innerHTML = productos[product].nombre;
     document.querySelector('.'+section+' #texto').innerHTML = productos[product].texto;
@@ -96,9 +107,7 @@ function changeProduct(section, product){
     document.querySelector('.'+section).style.background = productos[product].color;
 }
 
-const productOrder = ["MX", "Platinum", "Sport", "Optimizer", "Performance", "Jamaica"];
-let currentIndex = 0;
-
+//Cambia el producto mostrado con las flechas en dispositivos moviles
 function changeProductArrow(direction) {
     if (direction === "next") {
         currentIndex = (currentIndex + 1) % productOrder.length;
@@ -111,26 +120,32 @@ function changeProductArrow(direction) {
 }
 
 
-
+//Animacion de las tarjetas y actualizacion del panel de pastillas
 const cards = document.querySelectorAll(".card");
 const stackArea = document.querySelector(".stack");
 const containerImg = document.querySelectorAll('.img-container');
 
+//Actualiza el panel de pastillas con la informacion del producto activo
 function updateProductPanel(productKey) {
     document.querySelector('.pastillas h2').innerHTML = productos[productKey].nombre;
     document.querySelector('.pastillas p').innerHTML = productos[productKey].texto;
     document.querySelector('.pastillas a').href = productos[productKey].enlace;
     document.querySelector('.pastillas a').style.background = productos[productKey].color;
-/*==    document.querySelector('.img-container').style.background = productos[productKey].color;
-document.querySelector('.imagenes .img-container img').src = productos[productKey].imagen;*/
 
+    //Obtiene el contenedor de las imagenes y actualiza su estilo
     containerImg.forEach((product, index) => {
         product.style.background = productos[product.dataset.producto].color;
         product.style.transform = ` rotate(-${index*10}deg)`
         product.style.zIndex = containerImg.length - index;
 
-        if(product.dataset.producto === productKey){
-            product.style.transform = `translateX(-100vw) rotate(-48deg)`;
+        var temporal = productos[productKey].zIndex
+        if(product.dataset.producto != productKey){
+            var zIndex = productos[productKey].zIndex;
+            if(zIndex < getComputedStyle(product).zIndex){
+                product.style.transform = `translateX(-100vw) rotate(-48deg)`;
+            }
+        }else{
+            product.style.transform = `rotate(0deg)`
         }
     })
 }
