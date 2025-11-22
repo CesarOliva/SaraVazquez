@@ -120,6 +120,8 @@ function updateProductPanel(productKey) {
     document.querySelector('.pastillas p').innerHTML = productos[productKey].texto;
     document.querySelector('.pastillas a').href = productos[productKey].enlace;
     document.querySelector('.pastillas a').style.background = productos[productKey].color;
+    document.querySelector('.img-container').style.background = productos[productKey].color;
+    document.querySelector('.imagenes .img-container img').src = productos[productKey].imagen;
 }
 
 function getActiveCard() {
@@ -150,7 +152,7 @@ function rotateCards() {
 rotateCards();
 
 window.addEventListener("scroll", () => {
-    let distance = window.innerHeight * 0.4;
+    let distance = window.innerHeight * 0.45;
     let topVal = stackArea.getBoundingClientRect().top;
     let index = -1 * (topVal / distance + 1);
 

@@ -128,7 +128,7 @@ section{
     }
 
     .left{
-        height: max-content;
+        height: 100vh;
     }
 
     .card{
