@@ -114,6 +114,7 @@ function changeProductArrow(direction) {
 
 const cards = document.querySelectorAll(".card");
 const stackArea = document.querySelector(".stack");
+const containerImg = document.querySelectorAll('.img-container');
 
 function updateProductPanel(productKey) {
     document.querySelector('.pastillas h2').innerHTML = productos[productKey].nombre;
@@ -123,15 +124,15 @@ function updateProductPanel(productKey) {
 /*==    document.querySelector('.img-container').style.background = productos[productKey].color;
 document.querySelector('.imagenes .img-container img').src = productos[productKey].imagen;*/
 
-//CAMBIOS
+    containerImg.forEach((product, index) => {
+        product.style.background = productos[product.dataset.producto].color;
+        product.style.transform = ` rotate(-${index*10}deg)`
+        product.style.zIndex = containerImg.length - index;
 
-    primero = (document.querySelector('.img-container').dataset.producto)
-    if(primero != productKey){
-        document.querySelector('.img-container').remove();
-        document.querySelector('.img-container').style.background = productos[productKey].color;
-    }
-
-//TERMINA CAMBIOS
+        if(product.dataset.producto === productKey){
+            product.style.transform = `translateX(-100vw) rotate(-48deg)`;
+        }
+    })
 }
 
 function getActiveCard() {
@@ -146,11 +147,7 @@ function rotateCards() {
     let angle = 0;
     cards.forEach((card, index) => {
         if (card.classList.contains("away")) {
-            if (window.innerWidth < 768) {
-                card.style.transform = `translateX(-100vw) rotate(-48deg)`;
-            }else{
-                card.style.transform = `translateY(-120vh) rotate(-48deg)`;
-            }
+            card.style.transform = `translateY(-120vh) rotate(-48deg)`;
         } else {
             card.style.transform = ` rotate(${angle}deg)`;
             angle = angle - 10;

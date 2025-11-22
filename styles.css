@@ -77,8 +77,6 @@ section{
     top: 0;
 }
 
-/*CAMBIOS*/
-
 .imagenes {
     position: absolute;
     width: 250px;
@@ -87,34 +85,8 @@ section{
 
 .imagenes .img-container {
     position: absolute;
+    transition: 0.5s ease-in-out;
 }
-.imagenes .img-container:nth-child(1) {
-    background: #12a561;
-    z-index: 5;
-    rotate: 0deg;
-}
-.imagenes .img-container:nth-child(2) {
-    background: #cc3848;
-    z-index: 4;
-    rotate: -10deg;    
-}
-.imagenes .img-container:nth-child(3) {
-    background: #d36849;
-    z-index: 3;
-    rotate: -20deg;    
-}
-.imagenes .img-container:nth-child(4) {
-    background: #4d1187;
-    z-index: 2;
-    rotate: -30deg;        
-}
-.imagenes .img-container:nth-child(5) {
-    background: #f5a562;
-    z-index: 1;
-    rotate: -40deg;        
-}
-
-/*TERMINA CAMBIOS*/
 
 .card {
     width: 350px;
@@ -148,7 +120,7 @@ section{
 }
 
 .away {
- transform-origin: bottom left;
+    transform-origin: bottom left;
 }
 
 @media screen and (max-width: 968px) {
